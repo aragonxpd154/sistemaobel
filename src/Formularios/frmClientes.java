@@ -8,6 +8,7 @@ package Formularios;
 import Classes.Dados;
 import Classes.Produtos;
 import Classes.Utilidades;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class frmClientes extends javax.swing.JInternalFrame {
 private Dados clsdados;
-private int Produtoatual = 0;
+private int clienteatual = 0;
 private boolean cmdNovo = false;
 private DefaultTableModel Usertable;
 
@@ -59,7 +60,7 @@ public void setDados(Dados clsdados){
         Mtable = new javax.swing.JTable();
         txtsobrenomedocliente = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        txtobservacao1 = new javax.swing.JTextField();
+        txtendereco = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txttelefone = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -69,8 +70,8 @@ public void setDados(Dados clsdados){
         txtemail = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         cmbidentificacao = new javax.swing.JComboBox<>();
-        txtdata = new com.toedter.calendar.JDateChooser();
-        txtdatadenascimento = new com.toedter.calendar.JDateChooser();
+        caldata = new com.toedter.calendar.JDateChooser();
+        calnasc = new com.toedter.calendar.JDateChooser();
 
         setClosable(true);
         setIconifiable(true);
@@ -233,10 +234,10 @@ public void setDados(Dados clsdados){
         jLabel8.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jLabel8.setText("  Data:");
 
-        txtobservacao1.setEnabled(false);
-        txtobservacao1.addActionListener(new java.awt.event.ActionListener() {
+        txtendereco.setEnabled(false);
+        txtendereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtobservacao1ActionPerformed(evt);
+                txtenderecoActionPerformed(evt);
             }
         });
 
@@ -337,7 +338,7 @@ public void setDados(Dados clsdados){
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtdatadenascimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(calnasc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel11)
                                 .addGap(10, 10, 10)
@@ -346,7 +347,7 @@ public void setDados(Dados clsdados){
                                 .addGap(24, 24, 24)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtobservacao1)))
+                                .addComponent(txtendereco)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -367,7 +368,7 @@ public void setDados(Dados clsdados){
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtdata, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addComponent(caldata, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,28 +378,31 @@ public void setDados(Dados clsdados){
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)
-                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(caldata, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(11, 11, 11)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtnomedocliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(9, 9, 9)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(txtsobrenomedocliente)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel8)
-                                .addComponent(jLabel6)
-                                .addComponent(txtcodcliente)
-                                .addComponent(cmbidentificacao))
-                            .addComponent(txtdata, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(17, 17, 17)
-                        .addComponent(txtnomedocliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel6)
+                            .addComponent(txtcodcliente)
+                            .addComponent(cmbidentificacao))
+                        .addGap(56, 56, 56)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtobservacao1))
+                    .addComponent(txtendereco))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -406,7 +410,7 @@ public void setDados(Dados clsdados){
                     .addComponent(jLabel9)
                     .addComponent(cmbcidade)
                     .addComponent(jLabel11)
-                    .addComponent(txtdatadenascimento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(calnasc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -448,16 +452,27 @@ public void setDados(Dados clsdados){
         cmddeletar.setEnabled(false);
         
         txtcodcliente.setEnabled(true);
-        txtpreco.setEnabled(true);
+        cmbidentificacao.setEnabled(true);
         txtnomedocliente.setEnabled(true);
         txtsobrenomedocliente.setEnabled(true);
-        cmbtaxa.setEnabled(true);
+        txtendereco.setEnabled(true);
+        txttelefone.setEnabled(true);
+        cmbcidade.setEnabled(true);
+        txtemail.setEnabled(true);
+        calnasc.setEnabled(true);
+        
         
         txtcodcliente.setText("");
-        txtpreco.setText("");
+        cmbidentificacao.setSelectedIndex(0);
         txtnomedocliente.setText("");
         txtsobrenomedocliente.setText("");
-        cmbtaxa.setSelectedIndex(0);
+        txtendereco.setText("");
+        txttelefone.setText("");
+        cmbcidade.setSelectedIndex(0);
+        txtemail.setText("");
+        calnasc.setDate(new Date());
+        caldata.setDate(new Date());
+        
         
         cmdNovo=true;
         
@@ -481,14 +496,14 @@ public void setDados(Dados clsdados){
         cmddeletar.setEnabled(false);
         
         
-        txtpreco.setEnabled(true);
+        cmbidentificacao.setEnabled(true);
         txtnomedocliente.setEnabled(true);
         txtsobrenomedocliente.setEnabled(true);
         cmbtaxa.setEnabled(true);
          
         cmdNovo=false;
         
-        txtpreco.requestFocusInWindow();
+        cmbidentificacao.requestFocusInWindow();
     }//GEN-LAST:event_cmdalterarActionPerformed
 
     private void cmdsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdsalvarActionPerformed
@@ -508,9 +523,9 @@ public void setDados(Dados clsdados){
             
         }
         
-        if (txtpreco.getText().equals("")){
+        if (cmbidentificacao.getText().equals("")){
             JOptionPane.showMessageDialog(rootPane, "Favor digitar preço valido");
-            txtpreco.requestFocusInWindow();
+            cmbidentificacao.requestFocusInWindow();
             return;
         }
        
@@ -526,16 +541,16 @@ public void setDados(Dados clsdados){
             return;
         }
         
-        if (!Utilidades.isNumeric(txtpreco.getText())){
+        if (!Utilidades.isNumeric(cmbidentificacao.getText())){
             JOptionPane.showMessageDialog(rootPane, "Apenas Numeros valido");
-            txtpreco.requestFocusInWindow();
+            cmbidentificacao.requestFocusInWindow();
             return;
         }
         
-        int preco = Integer.parseInt(txtpreco.getText());
+        int preco = Integer.parseInt(cmbidentificacao.getText());
         if (preco<=0){
             JOptionPane.showMessageDialog(rootPane, "Esse campo só aceita numero maior que 0");
-            txtpreco.requestFocusInWindow();
+            cmbidentificacao.requestFocusInWindow();
             return;
         }
 
@@ -580,7 +595,7 @@ public void setDados(Dados clsdados){
         cmddeletar.setEnabled(true);
         
         txtcodcliente.setEnabled(false);
-        txtpreco.setEnabled(false);
+        cmbidentificacao.setEnabled(false);
         txtnomedocliente.setEnabled(false);
         txtsobrenomedocliente.setEnabled(false);
         cmbtaxa.setEnabled(false);
@@ -600,7 +615,7 @@ public void setDados(Dados clsdados){
         cmddeletar.setEnabled(true);
         
         txtcodcliente.setEnabled(false);
-        txtpreco.setEnabled(false);
+        cmbidentificacao.setEnabled(false);
         txtnomedocliente.setEnabled(false);
         txtsobrenomedocliente.setEnabled(false);
         cmbtaxa.setEnabled(false);
@@ -615,30 +630,30 @@ public void setDados(Dados clsdados){
     private void cmdprimeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdprimeiroActionPerformed
         // Codigo de botão primeiro do formulario de ususarios
         
-        Produtoatual = 0;
+        clienteatual = 0;
         visualizarCadastros();
     }//GEN-LAST:event_cmdprimeiroActionPerformed
 
     private void cmdultimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdultimoActionPerformed
         // Ultimo metodo para chamar o contador
-        Produtoatual = clsdados.NProdutos()-1;
+        clienteatual = clsdados.NProdutos()-1;
         visualizarCadastros();
     }//GEN-LAST:event_cmdultimoActionPerformed
 
     private void cmdproximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdproximoActionPerformed
         // Proximo incremento
-        Produtoatual ++;
-        if (Produtoatual == clsdados.NProdutos()){
-            Produtoatual=0;
+        clienteatual ++;
+        if (clienteatual == clsdados.NProdutos()){
+            clienteatual=0;
         }
         visualizarCadastros();
     }//GEN-LAST:event_cmdproximoActionPerformed
 
     private void cmdanteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdanteriorActionPerformed
         // incremento anterior
-        Produtoatual --;
-        if (Produtoatual == -1){
-            Produtoatual = clsdados.NProdutos()-1;
+        clienteatual --;
+        if (clienteatual == -1){
+            clienteatual = clsdados.NProdutos()-1;
             
         }
         visualizarCadastros();
@@ -654,9 +669,9 @@ public void setDados(Dados clsdados){
             return;
         }
         String msg;
-        msg = clsdados.DeletarUsuario(Produtoatual);
+        msg = clsdados.DeletarUsuario(clienteatual);
         JOptionPane.showMessageDialog(rootPane, msg);
-        Produtoatual=0;
+        clienteatual=0;
         visualizarCadastros();
         CarregarTable();
     }//GEN-LAST:event_cmddeletarActionPerformed
@@ -672,7 +687,7 @@ public void setDados(Dados clsdados){
             JOptionPane.showMessageDialog(rootPane, "Não foi possivel localizar esse cadastro no banco de dados");
             return;
         }
-        Produtoatual=posL;
+        clienteatual=posL;
         visualizarCadastros();
        
     }//GEN-LAST:event_cmdpesquisar1ActionPerformed
@@ -685,9 +700,9 @@ public void setDados(Dados clsdados){
         // TODO add your handling code here:
     }//GEN-LAST:event_txtnomedoclienteActionPerformed
 
-    private void txtobservacao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtobservacao1ActionPerformed
+    private void txtenderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtenderecoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtobservacao1ActionPerformed
+    }//GEN-LAST:event_txtenderecoActionPerformed
 
     private void txttelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttelefoneActionPerformed
         // TODO add your handling code here:
@@ -705,11 +720,11 @@ public void setDados(Dados clsdados){
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbidentificacaoActionPerformed
     private void visualizarCadastros(){
-        txtcodcliente.setText(clsdados.getProdutos()[Produtoatual].getCodproduto());
-        txtpreco.setText(""+clsdados.getProdutos()[Produtoatual].getPreco());
-        txtnomedocliente.setText(clsdados.getProdutos()[Produtoatual].getDescricao());
-        txtsobrenomedocliente.setText(clsdados.getProdutos()[Produtoatual].getObservacao());
-        cmbtaxa.setSelectedItem(clsdados.getProdutos()[Produtoatual].getTaxa());
+        txtcodcliente.setText(clsdados.getProdutos()[clienteatual].getCodproduto());
+        cmbidentificacao.setText(""+clsdados.getProdutos()[clienteatual].getPreco());
+        txtnomedocliente.setText(clsdados.getProdutos()[clienteatual].getDescricao());
+        txtsobrenomedocliente.setText(clsdados.getProdutos()[clienteatual].getObservacao());
+        cmbtaxa.setSelectedItem(clsdados.getProdutos()[clienteatual].getTaxa());
     }
     
     private void CarregarTable(){
@@ -741,6 +756,8 @@ public void setDados(Dados clsdados){
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Mtable;
+    private com.toedter.calendar.JDateChooser caldata;
+    private com.toedter.calendar.JDateChooser calnasc;
     private javax.swing.JComboBox<String> cmbcidade;
     private javax.swing.JComboBox<String> cmbidentificacao;
     private javax.swing.JButton cmdalterar;
@@ -766,11 +783,9 @@ public void setDados(Dados clsdados){
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtcodcliente;
-    private com.toedter.calendar.JDateChooser txtdata;
-    private com.toedter.calendar.JDateChooser txtdatadenascimento;
     private javax.swing.JTextField txtemail;
+    private javax.swing.JTextField txtendereco;
     private javax.swing.JTextField txtnomedocliente;
-    private javax.swing.JTextField txtobservacao1;
     private javax.swing.JTextField txtsobrenomedocliente;
     private javax.swing.JTextField txttelefone;
     // End of variables declaration//GEN-END:variables

@@ -226,21 +226,21 @@ public class Dados {
             Musuarios[i]=Musuarios[i + 1];
         }
         countusuarios --;
-        return " Usuario deletado com Sucesso";
+        return "Usuario deletado com Sucesso";
     }
         public String DeletarProduto(int poslinha){
         for(int i = poslinha; i < countprodutos -1; i++){
             Mprodutos[i]=Mprodutos[i + 1];
         }
         countprodutos --;
-        return " Usuario deletado com Sucesso";
+        return "Produto deletado com Sucesso";
     }
         public String DeletarCliente(int poslinha){
         for(int i = poslinha; i < countclientes -1; i++){
             Mclientes[i]=Mclientes[i + 1];
         }
         countclientes --;
-        return " Usuario deletado com Sucesso";
+        return "Cliente deletado com Sucesso";
     }
     
 }
