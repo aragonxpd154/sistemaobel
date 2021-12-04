@@ -495,11 +495,15 @@ public void setDados(Dados clsdados){
         cmdsalvar.setEnabled(true);
         cmddeletar.setEnabled(false);
         
-        
+        txtcodcliente.setEnabled(true);
         cmbidentificacao.setEnabled(true);
         txtnomedocliente.setEnabled(true);
         txtsobrenomedocliente.setEnabled(true);
-        cmbtaxa.setEnabled(true);
+        txtendereco.setEnabled(true);
+        txttelefone.setEnabled(true);
+        cmbcidade.setEnabled(true);
+        txtemail.setEnabled(true);
+        calnasc.setEnabled(true);
          
         cmdNovo=false;
         
