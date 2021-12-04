@@ -6,6 +6,7 @@
 package Formularios;
 
 import Classes.Dados;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,7 +14,11 @@ import javax.swing.JOptionPane;
  * @author OBEL
  */
 public class frmLogin extends javax.swing.JFrame {
+private Dados clsdados;
 
+public void setDados(Dados clsdados){
+    this.clsdados = clsdados;
+}
     /**
      * Creates new form frmLogin
      */
@@ -37,6 +42,7 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         cmdlogin = new javax.swing.JButton();
         cmdsair = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -67,6 +73,8 @@ public class frmLogin extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("Copyright © Todos os direitos reservados ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,13 +95,16 @@ public class frmLogin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(cmdlogin)
                         .addGap(177, 177, 177)
                         .addComponent(cmdsair)
-                        .addGap(51, 51, 51))
+                        .addGap(48, 48, 48))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45))))
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,11 +119,13 @@ public class frmLogin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtsenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdlogin)
                     .addComponent(cmdsair))
-                .addGap(19, 19, 19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -124,8 +137,9 @@ public class frmLogin extends javax.swing.JFrame {
 
     private void cmdloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdloginActionPerformed
         // Codigo do botão login
-        Dados clsdados = new Dados();
-        if (!clsdados.validarUsuarios(txtusuario.getText(),new String(txtsenha.getPassword()))){
+        
+        // Declarando e repassando dados ao metodo
+        if (clsdados.ValidarUsuario(txtusuario.getText(),new String(txtsenha.getPassword()))){
             JOptionPane.showMessageDialog(rootPane, "Usuário ou senha incorretos");  
             txtusuario.setText("");
             txtsenha.setText("");
@@ -133,6 +147,12 @@ public class frmLogin extends javax.swing.JFrame {
             return;
         }
         frmMenu frmmenu = new frmMenu();
+        // Metodo para fechamento do menu de login
+        this.setVisible(false);
+        frmmenu.setDados(clsdados);
+        // Extendendo o Formulario Menu e Maximizando por completo
+        frmmenu.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        // Habilitando para visualização
         frmmenu.setVisible(true);
     }//GEN-LAST:event_cmdloginActionPerformed
 
@@ -177,6 +197,7 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPasswordField txtsenha;
     private javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
