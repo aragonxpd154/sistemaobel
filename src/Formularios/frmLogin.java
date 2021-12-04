@@ -184,10 +184,8 @@ public void setDados(Dados clsdados){
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmLogin().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new frmLogin().setVisible(true);
         });
     }
 

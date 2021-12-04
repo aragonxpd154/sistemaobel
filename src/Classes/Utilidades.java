@@ -1,6 +1,10 @@
 
 package Classes;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author OBEL
@@ -11,13 +15,24 @@ public class Utilidades {
             Integer.parseInt(Numero);
             return true;
             
-        } catch (Exception e){
+        } catch (NumberFormatException e){
             return false;
         }
     }
+    public static Date StringToDate(String Data){
+        SimpleDateFormat formatotexto = new SimpleDateFormat("yyyy/MM/dd");
+        Date x = null;
+        try{
+            x = formatotexto.parse(Data);
+        }catch (ParseException ex){
+        }
+return x;
+}
+   
 
-    public static boolean IsNumeric(String text) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+
+    
     
 }
+

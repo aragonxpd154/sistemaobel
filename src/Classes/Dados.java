@@ -21,6 +21,14 @@ public class Dados {
     
     private int countprodutos = 0;
     
+    // Para Cliente
+    
+    private final int maxclientes = 80;
+    
+    private final Cliente Mclientes[]= new Cliente[maxclientes];
+    
+    private int countclientes = 0;
+    
     public Dados(){
         
         // Criando cadastro de Usuarios
@@ -56,6 +64,25 @@ public class Dados {
         Mprodutos[countprodutos]=Mproduto;
         countprodutos ++;
         
+        
+        // Regitrando cadastro de Produtos
+        Cliente Mcliente;
+        
+        // Regitrando cadastro de Produtos
+        Mcliente = new Cliente("1",1, "Marcos", "Silva", "Seven Sister Road", "252623325",1,Utilidades.StringToDate("1952/10/04"),Utilidades.StringToDate("1952/10/04"),"marcos.silvabl@live.com");
+        Mclientes[countclientes]=Mcliente;
+        countclientes ++;
+        
+        Mcliente = new Cliente("2",1, "Marcos", "Silva", "Seven Sister Road", "252623325",1,Utilidades.StringToDate("1952/10/04"),Utilidades.StringToDate("1952/10/04"),"marcos.silvabl@live.com");
+        Mclientes[countclientes]=Mcliente;
+        countclientes ++;
+        
+        Mcliente = new Cliente("3",1, "Marcos", "Silva", "Seven Sister Road", "252623325",1,Utilidades.StringToDate("1952/10/04"),Utilidades.StringToDate("1952/10/04"),"marcos.silvabl@live.com");
+        Mclientes[countclientes]=Mcliente;
+        countclientes ++;
+        
+        
+        
     }
     
     public int NUsuarios(){
@@ -66,12 +93,21 @@ public class Dados {
         return countprodutos;
     }
     
+    public int NClientes(){
+        return countclientes;
+    }   
+    
+    
     public Usuario[] getUsuarios(){
         return Musuarios;
     }
     public Produtos[] getProdutos(){
         return Mprodutos;
     }
+    public Cliente[] getClientes(){
+        return Mclientes;
+    }
+    
     public boolean ValidarUsuario(String usuario, String senha){
         boolean x = false;
         for(int i=0;i <countusuarios; i++){
@@ -106,6 +142,18 @@ public class Dados {
         return -1;
         
     }
+    public int LinhaClientes(String cliente){
+        
+   
+        for(int i=0;i < countclientes; i++){
+            if (Mclientes[i].getIdCliente().equals(cliente)){
+                return i;
+            }
+        }
+        return -1;
+        
+    }    
+    
     public String CadUsuario(Usuario MMusuario){
         if (countusuarios == maxusuarios){
             return "Não há espaço no banco de dados";
@@ -129,6 +177,18 @@ public class Dados {
     return " Produto cadastrado com Sucesso";
     
     }
+
+    public String Cadcliente(Cliente MMclientes){
+        if (countclientes == maxclientes){
+            return "Não há espaço no banco de dados";
+        }
+    
+    
+    Mclientes[countclientes]=MMclientes;
+    countclientes++;
+    return " Cliente cadastrado com Sucesso";
+    
+    }
     
     public String EditarUsuario(Usuario MMusuario, int poslinha) {
         Musuarios[poslinha].setNome(MMusuario.getNome());
@@ -147,6 +207,20 @@ public class Dados {
         
         return "Produto Editado com Sucesso";
     }
+        public String EditarCliente(Cliente MMclientes, int poslinha){
+        Mclientes[poslinha].setIdCliente(MMclientes.getIdCliente());
+        Mclientes[poslinha].setIndent(MMclientes.getIndent());
+        Mclientes[poslinha].setNome(MMclientes.getNome());
+        Mclientes[poslinha].setSobnome(MMclientes.getSobnome());
+        Mclientes[poslinha].setEndereco(MMclientes.getEndereco());
+        Mclientes[poslinha].setTelefone(MMclientes.getTelefone());
+        Mclientes[poslinha].setCidade(MMclientes.getCidade());
+        Mclientes[poslinha].setDataNasc(MMclientes.getDataNasc());
+        Mclientes[poslinha].setDataVenda(MMclientes.getDataVenda());
+        Mclientes[poslinha].setEmail(MMclientes.getEmail());
+        
+        return "Cliente Editado com Sucesso";
+    }
     public String DeletarUsuario(int poslinha){
         for(int i = poslinha; i < countusuarios -1; i++){
             Musuarios[i]=Musuarios[i + 1];
@@ -159,6 +233,13 @@ public class Dados {
             Mprodutos[i]=Mprodutos[i + 1];
         }
         countprodutos --;
+        return " Usuario deletado com Sucesso";
+    }
+        public String DeletarCliente(int poslinha){
+        for(int i = poslinha; i < countclientes -1; i++){
+            Mclientes[i]=Mclientes[i + 1];
+        }
+        countclientes --;
         return " Usuario deletado com Sucesso";
     }
     
