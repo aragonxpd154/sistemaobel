@@ -73,6 +73,11 @@ public void setDados(Dados clsdados){
         mnarquivosprodutos.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         mnarquivosprodutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/produtos16x16.png"))); // NOI18N
         mnarquivosprodutos.setText("Produtos");
+        mnarquivosprodutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnarquivosprodutosActionPerformed(evt);
+            }
+        });
         mnarquivosclientessair.add(mnarquivosprodutos);
 
         mnarquivosusuarios.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -186,6 +191,14 @@ public void setDados(Dados clsdados){
         Deskpainel.add(fusuario);
         fusuario.show();
     }//GEN-LAST:event_mnarquivosusuariosActionPerformed
+
+    private void mnarquivosprodutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnarquivosprodutosActionPerformed
+        //Codigo para acesso ao formulario Produtos da Barra de Menu
+        frmProdutos Produtos = new frmProdutos();
+        Produtos.setDados(clsdados);
+        Deskpainel.add(Produtos);
+        Produtos.show();
+    }//GEN-LAST:event_mnarquivosprodutosActionPerformed
 
     /**
      * @param args the command line arguments

@@ -6,7 +6,8 @@
 package Formularios;
 
 import Classes.Dados;
-import Classes.Usuario;
+import Classes.Produtos;
+import Classes.Utilidades;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -14,16 +15,18 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author OBEL
  */
-public class frmUsuarios extends javax.swing.JInternalFrame {
+public class frmProdutos extends javax.swing.JInternalFrame {
 private Dados clsdados;
-private int usuarioatual = 0;
+private int Produtoatual = 0;
 private boolean cmdNovo = false;
 private DefaultTableModel Usertable;
+    private Produtos Mproduto;
+    private String produto;
 
 public void setDados(Dados clsdados){
     this.clsdados = clsdados;
 }
-    public frmUsuarios() {
+    public frmProdutos() {
         initComponents();
     }
 
@@ -39,13 +42,11 @@ public void setDados(Dados clsdados){
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        cmbperfil = new javax.swing.JComboBox<>();
-        txtcodusuario = new javax.swing.JTextField();
-        txtnome = new javax.swing.JTextField();
-        txtsobrenome = new javax.swing.JTextField();
+        cmbtaxa = new javax.swing.JComboBox<>();
+        txtcodproduto = new javax.swing.JTextField();
+        txtpreco = new javax.swing.JTextField();
+        txtdescricao = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         cmdproximo = new javax.swing.JButton();
         cmdultimo = new javax.swing.JButton();
@@ -56,17 +57,17 @@ public void setDados(Dados clsdados){
         cmdsalvar = new javax.swing.JButton();
         cmddeletar = new javax.swing.JButton();
         cmdcancelar = new javax.swing.JButton();
-        txtsenha = new javax.swing.JPasswordField();
-        txtconfsenha = new javax.swing.JPasswordField();
         cmdpesquisar1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Mtable = new javax.swing.JTable();
+        txtobservacao = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Cadastro de Usuarios ");
+        setTitle("Cadastro de Produtos ");
         setToolTipText("");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
@@ -87,54 +88,48 @@ public void setDados(Dados clsdados){
         });
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jLabel1.setText("Cod. Usuário:");
+        jLabel1.setText("Cod. Produto:");
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jLabel2.setText("           Nome:");
+        jLabel2.setText("   Descrição:");
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jLabel3.setText("Sobre Nome:");
-
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jLabel4.setText("          Senha:");
-
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jLabel5.setText("Conf. Senha:");
+        jLabel3.setText("Observação");
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jLabel6.setText("Perfil:");
+        jLabel6.setText("Preço:");
 
-        cmbperfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Perfil", "Administrador", "Funcionario" }));
-        cmbperfil.setEnabled(false);
-        cmbperfil.addActionListener(new java.awt.event.ActionListener() {
+        cmbtaxa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Perfil", "Administrador", "Funcionario" }));
+        cmbtaxa.setEnabled(false);
+        cmbtaxa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbperfilActionPerformed(evt);
+                cmbtaxaActionPerformed(evt);
             }
         });
 
-        txtcodusuario.setEnabled(false);
-        txtcodusuario.addActionListener(new java.awt.event.ActionListener() {
+        txtcodproduto.setEnabled(false);
+        txtcodproduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtcodusuarioActionPerformed(evt);
+                txtcodprodutoActionPerformed(evt);
             }
         });
 
-        txtnome.setEnabled(false);
-        txtnome.addActionListener(new java.awt.event.ActionListener() {
+        txtpreco.setEnabled(false);
+        txtpreco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtnomeActionPerformed(evt);
+                txtprecoActionPerformed(evt);
             }
         });
 
-        txtsobrenome.setEnabled(false);
-        txtsobrenome.addActionListener(new java.awt.event.ActionListener() {
+        txtdescricao.setEnabled(false);
+        txtdescricao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtsobrenomeActionPerformed(evt);
+                txtdescricaoActionPerformed(evt);
             }
         });
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel7.setText("Cadastro de Usuários");
+        jLabel7.setText("Cadastro de Produtos");
 
         cmdproximo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ir32x32.png"))); // NOI18N
         cmdproximo.setToolTipText("Proximo Cadastro");
@@ -210,10 +205,6 @@ public void setDados(Dados clsdados){
             }
         });
 
-        txtsenha.setText("jPasswordField1");
-
-        txtconfsenha.setText("jPasswordField1");
-
         cmdpesquisar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/procurar32x32.png"))); // NOI18N
         cmdpesquisar1.setToolTipText("Pesquisar Cadastro");
         cmdpesquisar1.addActionListener(new java.awt.event.ActionListener() {
@@ -235,6 +226,16 @@ public void setDados(Dados clsdados){
         ));
         jScrollPane1.setViewportView(Mtable);
 
+        txtobservacao.setEnabled(false);
+        txtobservacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtobservacaoActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        jLabel8.setText("  Taxa:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -242,87 +243,87 @@ public void setDados(Dados clsdados){
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 119, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(266, 266, 266))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(cmdprimeiro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmdanterior, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmdproximo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmdultimo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmdnovo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmdalterar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmdcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmdsalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmddeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmdpesquisar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(107, 107, 107))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtcodusuario, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addComponent(txtcodproduto)
+                                .addGap(46, 46, 46)
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cmbperfil, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtpreco, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cmbtaxa, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3))
-                                .addGap(18, 18, 18)
+                                .addGap(20, 20, 20)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtnome)
-                                    .addComponent(txtsobrenome)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cmdprimeiro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cmdanterior, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cmdproximo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cmdultimo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cmdnovo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cmdalterar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cmdcancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cmdsalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cmddeletar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cmdpesquisar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 3, Short.MAX_VALUE))
-                                    .addComponent(txtsenha)
-                                    .addComponent(txtconfsenha))))
-                        .addContainerGap(57, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(141, 141, 141))
+                                    .addComponent(txtobservacao)
+                                    .addComponent(txtdescricao))))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(4, 4, 4)
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel6)
-                    .addComponent(cmbperfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtcodusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel7)
+                        .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtnome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(9, 9, 9)
-                        .addComponent(txtsobrenome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addComponent(txtcodproduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(44, 44, 44)
-                        .addComponent(jLabel3)))
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(88, 88, 88)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmbtaxa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(txtpreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtdescricao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtobservacao, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtsenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtconfsenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cmdproximo)
                     .addComponent(cmdultimo)
@@ -334,29 +335,19 @@ public void setDados(Dados clsdados){
                     .addComponent(cmdalterar)
                     .addComponent(cmdcancelar)
                     .addComponent(cmdpesquisar1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtcodusuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcodusuarioActionPerformed
+    private void txtcodprodutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcodprodutoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtcodusuarioActionPerformed
+    }//GEN-LAST:event_txtcodprodutoActionPerformed
 
-    private void txtnomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnomeActionPerformed
+    private void txtprecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprecoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtnomeActionPerformed
-
-    private void txtsobrenomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsobrenomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtsobrenomeActionPerformed
-
-    private void cmbperfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbperfilActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbperfilActionPerformed
+    }//GEN-LAST:event_txtprecoActionPerformed
 
     private void cmdnovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdnovoActionPerformed
         // TODO add your handling code here:
@@ -370,23 +361,21 @@ public void setDados(Dados clsdados){
         cmdsalvar.setEnabled(true);
         cmddeletar.setEnabled(false);
         
-        txtcodusuario.setEnabled(true);
-        txtnome.setEnabled(true);
-        txtsobrenome.setEnabled(true);
-        txtsenha.setEnabled(true);
-        txtconfsenha.setEnabled(true);
-        cmbperfil.setEnabled(true);
+        txtcodproduto.setEnabled(true);
+        txtpreco.setEnabled(true);
+        txtdescricao.setEnabled(true);
+        txtobservacao.setEnabled(true);
+        cmbtaxa.setEnabled(true);
         
-        txtcodusuario.setText("");
-        txtnome.setText("");
-        txtsobrenome.setText("");
-        txtsenha.setText("");
-        txtconfsenha.setText("");
-        cmbperfil.setSelectedIndex(0);
+        txtcodproduto.setText("");
+        txtpreco.setText("");
+        txtdescricao.setText("");
+        txtobservacao.setText("");
+        cmbtaxa.setSelectedIndex(0);
         
         cmdNovo=true;
         
-        txtcodusuario.requestFocusInWindow();
+        txtcodproduto.requestFocusInWindow();
         
         CarregarTable();
               
@@ -406,72 +395,69 @@ public void setDados(Dados clsdados){
         cmddeletar.setEnabled(false);
         
         
-        txtnome.setEnabled(true);
-        txtsobrenome.setEnabled(true);
-        txtsenha.setEnabled(true);
-        txtconfsenha.setEnabled(true);
-        cmbperfil.setEnabled(true);
+        txtpreco.setEnabled(true);
+        txtdescricao.setEnabled(true);
+        txtobservacao.setEnabled(true);
+        cmbtaxa.setEnabled(true);
          
         cmdNovo=false;
         
-        txtnome.requestFocusInWindow();
+        txtpreco.requestFocusInWindow();
     }//GEN-LAST:event_cmdalterarActionPerformed
 
     private void cmdsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdsalvarActionPerformed
 
         // Validando Campos no Formulario de Cadastro
         
-        if (txtcodusuario.getText().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Favor digitar um codigo valido");
-            txtcodusuario.requestFocusInWindow();
+        if (txtcodproduto.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Favor digitar um codigo de produto valido");
+            txtcodproduto.requestFocusInWindow();
             return;
         }
         
-        if (cmbperfil.getSelectedIndex()==0){
-            JOptionPane.showMessageDialog(rootPane, "Favor selecionar  um perfil valido");
-            cmbperfil.requestFocusInWindow();
+        if (cmbtaxa.getSelectedIndex()==0){
+            JOptionPane.showMessageDialog(rootPane, "Favor selecionar  uma taxa valido");
+            cmbtaxa.requestFocusInWindow();
             return;
             
         }
         
-        if (txtnome.getText().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Favor digitar um nome valido");
-            txtnome.requestFocusInWindow();
+        if (txtpreco.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Favor digitar preço valido");
+            txtpreco.requestFocusInWindow();
             return;
         }
        
-        if (txtsobrenome.getText().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Favor digitar um sobrenome valido");
-            txtsobrenome.requestFocusInWindow();
-            return;
-        }
-         
-        String SSenha = new String (txtsenha.getPassword());
-        String confSenha = new String (txtconfsenha.getPassword());
-        
-        if (SSenha.equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Favor digitar uma senha valida");
-            txtsenha.requestFocusInWindow();
+        if (txtdescricao.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Favor digitar descrição valido");
+            txtdescricao.requestFocusInWindow();
             return;
         }
         
-        if (confSenha.equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Favor digitar um codigo valido");
-            txtconfsenha.requestFocusInWindow();
+        if (txtobservacao.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Favor digitar observacao valido");
+            txtobservacao.requestFocusInWindow();
             return;
         }
         
-        if (!SSenha.equals(confSenha)){
-            JOptionPane.showMessageDialog(rootPane, "Senha diferentes");
-            txtsenha.requestFocusInWindow();
+        if (Utilidades.IsNumeric(txtpreco.getText())){
+            JOptionPane.showMessageDialog(rootPane, "Apenas Numeros valido");
+            txtpreco.requestFocusInWindow();
             return;
         }
         
-        int poslinha = clsdados.LinhaUsuario(txtcodusuario.getText());
+        int preco = Integer.parseInt(txtpreco.getText());
+        if (preco<=0){
+            JOptionPane.showMessageDialog(rootPane, "Esse campo só aceita numero maior que 0");
+            txtpreco.requestFocusInWindow();
+            return;
+        }
+
+        int poslinha = clsdados.LinhaProdutos(txtcodproduto.getText());
         if (cmdNovo){       
             if (poslinha != -1){
             JOptionPane.showMessageDialog(rootPane, " Esse cadastro de usuario já existe no banco de dados");
-            txtcodusuario.requestFocusInWindow();
+            txtcodproduto.requestFocusInWindow();
             return;
             
         }
@@ -479,16 +465,18 @@ public void setDados(Dados clsdados){
         else{
             if(poslinha == -1){
                 JOptionPane.showMessageDialog(rootPane, " Esse cadastro de usuario não existe no banco de dados");
-                txtcodusuario.requestFocusInWindow();
+                txtcodproduto.requestFocusInWindow();
                 return;
                 
             }
         }
-            
-        
-        
-        Usuario MUsuario = new Usuario(txtcodusuario.getText(), txtnome.getText(), txtsobrenome.getText(),SSenha,(String) cmbperfil.getSelectedItem());
-        String msg = clsdados.CadUsuario(MUsuario);
+        Produtos MProduto = new Produtos(txtcodproduto.getText(), txtdescricao.getText(), preco, cmbtaxa.getSelectedIndex(), txtobservacao.getText());
+        String msg;
+        if (cmdNovo){
+            msg=clsdados.Cadproduto(Mproduto);
+        }else{
+            msg = clsdados.EditarProduto(Mproduto, poslinha);
+        }
         JOptionPane.showMessageDialog(rootPane, msg);
                 
         // Codigo do botão salvar formulario usuarios
@@ -503,14 +491,12 @@ public void setDados(Dados clsdados){
         cmdsalvar.setEnabled(false);
         cmddeletar.setEnabled(true);
         
-        txtcodusuario.setEnabled(false);
-        txtnome.setEnabled(false);
-        txtsobrenome.setEnabled(false);
-        txtsenha.setEnabled(false);
-        txtconfsenha.setEnabled(false);
-        cmbperfil.setEnabled(false);
+        txtcodproduto.setEnabled(false);
+        txtpreco.setEnabled(false);
+        txtdescricao.setEnabled(false);
+        txtobservacao.setEnabled(false);
+        cmbtaxa.setEnabled(false);
         
-        CarregarTable();
     }//GEN-LAST:event_cmdsalvarActionPerformed
 
     private void cmdcancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdcancelarActionPerformed
@@ -525,12 +511,11 @@ public void setDados(Dados clsdados){
         cmdsalvar.setEnabled(false);
         cmddeletar.setEnabled(true);
         
-        txtcodusuario.setEnabled(false);
-        txtnome.setEnabled(false);
-        txtsobrenome.setEnabled(false);
-        txtsenha.setEnabled(false);
-        txtconfsenha.setEnabled(false);
-        cmbperfil.setEnabled(false);
+        txtcodproduto.setEnabled(false);
+        txtpreco.setEnabled(false);
+        txtdescricao.setEnabled(false);
+        txtobservacao.setEnabled(false);
+        cmbtaxa.setEnabled(false);
     }//GEN-LAST:event_cmdcancelarActionPerformed
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
@@ -542,30 +527,30 @@ public void setDados(Dados clsdados){
     private void cmdprimeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdprimeiroActionPerformed
         // Codigo de botão primeiro do formulario de ususarios
         
-        usuarioatual = 0;
+        Produtoatual = 0;
         visualizarCadastros();
     }//GEN-LAST:event_cmdprimeiroActionPerformed
 
     private void cmdultimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdultimoActionPerformed
         // Ultimo metodo para chamar o contador
-        usuarioatual = clsdados.NUsuarios()-1;
+        Produtoatual = clsdados.NProdutos()-1;
         visualizarCadastros();
     }//GEN-LAST:event_cmdultimoActionPerformed
 
     private void cmdproximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdproximoActionPerformed
         // Proximo incremento
-        usuarioatual ++;
-        if (usuarioatual == clsdados.NUsuarios()){
-            usuarioatual=0;
+        Produtoatual ++;
+        if (Produtoatual == clsdados.NProdutos()){
+            Produtoatual=0;
         }
         visualizarCadastros();
     }//GEN-LAST:event_cmdproximoActionPerformed
 
     private void cmdanteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdanteriorActionPerformed
         // incremento anterior
-        usuarioatual --;
-        if (usuarioatual == -1){
-            usuarioatual = clsdados.NUsuarios()-1;
+        Produtoatual --;
+        if (Produtoatual == -1){
+            Produtoatual = clsdados.NProdutos()-1;
             
         }
         visualizarCadastros();
@@ -581,56 +566,74 @@ public void setDados(Dados clsdados){
             return;
         }
         String msg;
-        msg = clsdados.DeletarUsuario(usuarioatual);
+        msg = clsdados.DeletarUsuario(Produtoatual);
         JOptionPane.showMessageDialog(rootPane, msg);
-        usuarioatual=0;
+        Produtoatual=0;
         visualizarCadastros();
         CarregarTable();
     }//GEN-LAST:event_cmddeletarActionPerformed
 
     private void cmdpesquisar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdpesquisar1ActionPerformed
         // Metodo Pesquisar
-        String usuario = JOptionPane.showInputDialog("Digite o codigo do usuario para realizar sua pesquisa");
-        if (usuario.equals("")){
+        String produto = JOptionPane.showInputDialog("Digite o codigo do usuario para realizar sua pesquisa");
+        if (produto.equals("")){
             return;
         }
-        int posL = clsdados.LinhaUsuario(usuario);
+        int posL = clsdados.LinhaProdutos(produto);
         if (posL ==  -1){
             JOptionPane.showMessageDialog(rootPane, "Não foi possivel localizar esse cadastro no banco de dados");
             return;
         }
-        usuarioatual=posL;
+        Produtoatual=posL;
         visualizarCadastros();
        
     }//GEN-LAST:event_cmdpesquisar1ActionPerformed
+
+    private void cmbtaxaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbtaxaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbtaxaActionPerformed
+
+    private void txtobservacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtobservacaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtobservacaoActionPerformed
+
+    private void txtdescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdescricaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtdescricaoActionPerformed
     private void visualizarCadastros(){
-        txtcodusuario.setText(clsdados.getUsuarios()[usuarioatual].getIdcodusuario());
-        txtnome.setText(clsdados.getUsuarios()[usuarioatual].getNome());
-        txtsobrenome.setText(clsdados.getUsuarios()[usuarioatual].getSobrenome());
-        txtsenha.setText(clsdados.getUsuarios()[usuarioatual].getSenha());
-        txtconfsenha.setText(clsdados.getUsuarios()[usuarioatual].getSenha());
-        cmbperfil.setSelectedItem(clsdados.getUsuarios()[usuarioatual].getPerfil());
+        txtcodproduto.setText(clsdados.getProdutos()[Produtoatual].getCodproduto());
+        txtpreco.setText(""+clsdados.getProdutos()[Produtoatual].getPreco());
+        txtdescricao.setText(clsdados.getProdutos()[Produtoatual].getDescricao());
+        txtobservacao.setText(clsdados.getProdutos()[Produtoatual].getObservacao());
+        cmbtaxa.setSelectedItem(clsdados.getProdutos()[Produtoatual].getTaxa());
     }
     
     private void CarregarTable(){
-        String titulocabecalho[]={"Cod Usuario", "Nome", "S-Nome","Perfil"};
-        String RegCadastro[] = new String [4];
+        String titulocabecalho[]={"Cod do Produto", "Descrição", "Preço","Taxa", "Observação"};
+        String RegCadastro[] = new String [5];
         Usertable=new DefaultTableModel(null,titulocabecalho);
-        for(int i=0;i<clsdados.NUsuarios();i++){
-            RegCadastro[0]=clsdados.getUsuarios()[i].getIdcodusuario();
-            RegCadastro[1]=clsdados.getUsuarios()[i].getNome();
-            RegCadastro[2]=clsdados.getUsuarios()[i].getSobrenome();
-            RegCadastro[3]=clsdados.getUsuarios()[i].getPerfil();
+        for(int i=0;i<clsdados.NProdutos();i++){
+            RegCadastro[0]=clsdados.getProdutos()[i].getCodproduto();
+            RegCadastro[1]=clsdados.getProdutos()[i].getDescricao();
+            RegCadastro[2]="" + clsdados.getProdutos()[i].getPreco();
+            RegCadastro[3]="" + clsdados.getProdutos()[i].getTaxa();
+            RegCadastro[4]=(clsdados.getProdutos()[i].getObservacao());
             
             Usertable.addRow(RegCadastro);
         }
         Mtable.setModel(Usertable);
     }
-    
+    private String Perfil (int idperfil){
+        if(idperfil ==1){
+            return "ADMINISTRADOR";
+        }else{
+            return "FUNCIONARIO";
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Mtable;
-    private javax.swing.JComboBox<String> cmbperfil;
+    private javax.swing.JComboBox<String> cmbtaxa;
     private javax.swing.JButton cmdalterar;
     private javax.swing.JButton cmdanterior;
     private javax.swing.JButton cmdcancelar;
@@ -644,15 +647,13 @@ public void setDados(Dados clsdados){
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtcodusuario;
-    private javax.swing.JPasswordField txtconfsenha;
-    private javax.swing.JTextField txtnome;
-    private javax.swing.JPasswordField txtsenha;
-    private javax.swing.JTextField txtsobrenome;
+    private javax.swing.JTextField txtcodproduto;
+    private javax.swing.JTextField txtdescricao;
+    private javax.swing.JTextField txtobservacao;
+    private javax.swing.JTextField txtpreco;
     // End of variables declaration//GEN-END:variables
 }
