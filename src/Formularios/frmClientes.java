@@ -526,6 +526,11 @@ public void setDados(Dados clsdados){
             cmbidentificacao.requestFocusInWindow();
             return;
         }
+        if (cmbcidade.getSelectedIndex()==0){
+            JOptionPane.showMessageDialog(rootPane, "Favor digitar uma cidade valido");
+            cmbcidade.requestFocusInWindow();
+            return;
+        }
         if (txttelefone.getText().equals("")){
             JOptionPane.showMessageDialog(rootPane, "Favor digitar um numero de telefone valido");
             txttelefone.requestFocusInWindow();
