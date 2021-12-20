@@ -5,8 +5,8 @@
  */
 package Formularios;
 
+import Classes.Cliente;
 import Classes.Dados;
-import Classes.Produtos;
 import Classes.Utilidades;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -571,22 +571,24 @@ public void setDados(Dados clsdados){
                 
             }
         }
-        Cliente Mcliente = new Cliente(txtcodcliente.getText(),
-                cmbidentificacao.getSelectedIndex(),
-                txtnomedocliente.getText(),
-                txtsobrenomedocliente.getText(),
-                txtendereco.getText(),
-                txttelefone.getText(),
-                cmbcidade.getSelectedIndex(),
-                caldata.getDate(),
-                calnasc.getAccessibleContext(),
-                txtemail.getText());
+        Cliente Mcliente;
+    Mcliente = new Cliente(txtcodcliente.getText(),
+            cmbidentificacao.getSelectedIndex(),
+            txtnomedocliente.getText(),
+            txtsobrenomedocliente.getText(),
+            txtendereco.getText(),
+            txttelefone.getText(),
+            cmbcidade.getSelectedIndex(),
+            caldata.getDate(),
+            calnasc.getDate(),
+            txtemail.getText()
+    );
         
         String msg;
         if (cmdNovo){
             msg=clsdados.Cadcliente(Mcliente);
         }else{
-            msg = clsdados.EditarProduto(Mcliente, poslinha);
+            msg = clsdados.EditarCliente(Mcliente, poslinha);
         }
         JOptionPane.showMessageDialog(rootPane, msg);
         CarregarTable();
@@ -607,7 +609,11 @@ public void setDados(Dados clsdados){
         cmbidentificacao.setEnabled(false);
         txtnomedocliente.setEnabled(false);
         txtsobrenomedocliente.setEnabled(false);
-        cmbtaxa.setEnabled(false);
+        txtendereco.setEnabled(false);
+        txttelefone.setEnabled(false);
+        cmbcidade.setEnabled(false);
+        txtemail.setEnabled(false);
+        calnasc.setEnabled(false);
         
     }//GEN-LAST:event_cmdsalvarActionPerformed
 
@@ -733,11 +739,13 @@ public void setDados(Dados clsdados){
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbidentificacaoActionPerformed
     private void visualizarCadastros(){
-        txtcodcliente.setText(clsdados.getProdutos()[clienteatual].getCodproduto());
-        cmbidentificacao.setText(""+clsdados.getProdutos()[clienteatual].getPreco());
-        txtnomedocliente.setText(clsdados.getProdutos()[clienteatual].getDescricao());
-        txtsobrenomedocliente.setText(clsdados.getProdutos()[clienteatual].getObservacao());
-        cmbtaxa.setSelectedItem(clsdados.getProdutos()[clienteatual].getTaxa());
+        txtcodcliente.setText(clsdados.getClientes()[clienteatual].getIdCliente());
+        cmbidentificacao.setSelectedItem(clsdados.getClientes()[clienteatual].getIndent());
+        txtnomedocliente.setText(clsdados.getClientes()[clienteatual].getNome());
+        txtsobrenomedocliente.setText(clsdados.getClientes()[clienteatual].getSobnome());
+        cmbcidade.setSelectedItem(clsdados.getClientes()[clienteatual].getCidade());
+        
+       
     }
     
     private void CarregarTable(){
