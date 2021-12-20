@@ -547,33 +547,13 @@ public void setDados(Dados clsdados){
             JOptionPane.showMessageDialog(rootPane, "Favor digitar sobrenome do cliente válido");
             txtsobrenomedocliente.requestFocusInWindow();
             return;
-        }
-       
-        if (!Utilidades.isNumeric(txtsobre)){
-            JOptionPane.showMessageDialog(rootPane, "Favor digitar descrição valido");
-            txtnomedocliente.requestFocusInWindow();
+        }       
+        if (calnasc.getDate().before(new Date())){
+            JOptionPane.showMessageDialog(rootPane, "O cliente ncao pode ter a data de nascimento igual a data atual");
+            calnasc.requestFocusInWindow();
             return;
         }
         
-        if (txtsobrenomedocliente.getText().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Favor digitar observacao valido");
-            txtsobrenomedocliente.requestFocusInWindow();
-            return;
-        }
-        
-        if (!Utilidades.isNumeric(cmbidentificacao.getText())){
-            JOptionPane.showMessageDialog(rootPane, "Apenas Numeros valido");
-            cmbidentificacao.requestFocusInWindow();
-            return;
-        }
-        
-        int preco = Integer.parseInt(cmbidentificacao.getText());
-        if (preco<=0){
-            JOptionPane.showMessageDialog(rootPane, "Esse campo só aceita numero maior que 0");
-            cmbidentificacao.requestFocusInWindow();
-            return;
-        }
-
         int poslinha = clsdados.LinhaProdutos(txtcodcliente.getText());
         if (cmdNovo){       
             if (poslinha != -1){
@@ -585,13 +565,21 @@ public void setDados(Dados clsdados){
         }
         else{
             if(poslinha == -1){
-                JOptionPane.showMessageDialog(rootPane, " Esse cadastro de usuario não existe no banco de dados");
+                JOptionPane.showMessageDialog(rootPane, " Esse cadastro de cliente não existe no banco de dados");
                 txtcodcliente.requestFocusInWindow();
                 return;
                 
             }
         }
-        Produtos Mproduto = new Produtos(txtcodcliente.getText(), txtnomedocliente.getText(), preco, cmbtaxa.getSelectedIndex(), txtsobrenomedocliente.getText());
+        Cliente Mcliente = new Cliente(txtcodcliente.getText(),
+                cmbidentificacao.getSelectedIndex(),
+                txtnomedocliente.getText(),
+                txtsobrenomedocliente.getText(),
+                txttelefone.getText(),
+                cmbcidade.getSelectedIndex(),
+                caldata.getDate(),
+                calnasc.getAccessibleContext(),
+                txtemail.getText());
         
         String msg;
         if (cmdNovo){
