@@ -575,6 +575,7 @@ public void setDados(Dados clsdados){
                 cmbidentificacao.getSelectedIndex(),
                 txtnomedocliente.getText(),
                 txtsobrenomedocliente.getText(),
+                txtendereco.getText(),
                 txttelefone.getText(),
                 cmbcidade.getSelectedIndex(),
                 caldata.getDate(),
@@ -583,9 +584,9 @@ public void setDados(Dados clsdados){
         
         String msg;
         if (cmdNovo){
-            msg=clsdados.Cadproduto(Mproduto);
+            msg=clsdados.Cadcliente(Mcliente);
         }else{
-            msg = clsdados.EditarProduto(Mproduto, poslinha);
+            msg = clsdados.EditarProduto(Mcliente, poslinha);
         }
         JOptionPane.showMessageDialog(rootPane, msg);
         CarregarTable();
@@ -626,7 +627,11 @@ public void setDados(Dados clsdados){
         cmbidentificacao.setEnabled(false);
         txtnomedocliente.setEnabled(false);
         txtsobrenomedocliente.setEnabled(false);
-        cmbtaxa.setEnabled(false);
+        txtendereco.setEnabled(false);
+        txttelefone.setEnabled(false);
+        cmbcidade.setEnabled(false);
+        txtemail.setEnabled(false);
+        calnasc.setEnabled(false);
     }//GEN-LAST:event_cmdcancelarActionPerformed
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
