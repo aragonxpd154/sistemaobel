@@ -479,8 +479,7 @@ public void setDados(Dados clsdados){
         
         txtcodcliente.requestFocusInWindow();
         
-        CarregarTable();
-              
+        CarregarTable();       
         
     }//GEN-LAST:event_cmdnovoActionPerformed
 
@@ -509,6 +508,8 @@ public void setDados(Dados clsdados){
         cmdNovo=false;
         
         cmbidentificacao.requestFocusInWindow();
+        
+        CarregarTable();
     }//GEN-LAST:event_cmdalterarActionPerformed
 
     private void cmdsalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdsalvarActionPerformed
@@ -516,25 +517,34 @@ public void setDados(Dados clsdados){
         // Validando Campos no Formulario de Cadastro
         
         if (txtcodcliente.getText().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Favor digitar um codigo de produto valido");
+            JOptionPane.showMessageDialog(rootPane, "Favor digitar o codigo de cliente valido");
             txtcodcliente.requestFocusInWindow();
             return;
         }
-        
-        if (cmbtaxa.getSelectedIndex()==0){
-            JOptionPane.showMessageDialog(rootPane, "Favor selecionar  uma taxa valido");
-            cmbtaxa.requestFocusInWindow();
+        if (cmbidentificacao.getSelectedIndex()==0){
+            JOptionPane.showMessageDialog(rootPane, "Favor digitar um numero de telefone valido");
+            cmbidentificacao.requestFocusInWindow();
+            return;
+        }
+        if (txttelefone.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Favor digitar um numero de telefone valido");
+            txttelefone.requestFocusInWindow();
+            return;
+        }
+        if (txtemail.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Favor digitar o e-mail valido");
+            txtemail.requestFocusInWindow();
             return;
             
         }
         
-        if (cmbidentificacao.getText().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Favor digitar preço valido");
-            cmbidentificacao.requestFocusInWindow();
+        if (txtsobrenomedocliente.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Favor digitar sobrenome do cliente válido");
+            txtsobrenomedocliente.requestFocusInWindow();
             return;
         }
        
-        if (txtnomedocliente.getText().equals("")){
+        if (!Utilidades.isNumeric(txtsobre)){
             JOptionPane.showMessageDialog(rootPane, "Favor digitar descrição valido");
             txtnomedocliente.requestFocusInWindow();
             return;
