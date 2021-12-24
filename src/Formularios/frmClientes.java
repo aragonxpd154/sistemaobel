@@ -1,3 +1,8 @@
+    /**
+     * Desenvolvido por Obel.
+     * WARNING: Do NOT modify this code. 
+     * 
+     */
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -70,8 +75,6 @@ public void setDados(Dados clsdados){
         txtemail = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         cmbidentificacao = new javax.swing.JComboBox<>();
-        caldata = new com.toedter.calendar.JDateChooser();
-        calnasc = new com.toedter.calendar.JDateChooser();
 
         setClosable(true);
         setIconifiable(true);
@@ -337,9 +340,7 @@ public void setDados(Dados clsdados){
                                 .addComponent(txttelefone)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(calnasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(64, 64, 64)
+                                .addGap(113, 113, 113)
                                 .addComponent(jLabel11)
                                 .addGap(10, 10, 10)
                                 .addComponent(cmbcidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -367,9 +368,7 @@ public void setDados(Dados clsdados){
                                 .addComponent(cmbidentificacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(caldata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46))))))
+                                .addGap(95, 95, 95))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -379,10 +378,8 @@ public void setDados(Dados clsdados){
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(caldata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(txtnomedocliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -402,16 +399,12 @@ public void setDados(Dados clsdados){
                     .addComponent(jLabel4)
                     .addComponent(txtendereco))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5)
-                        .addComponent(txttelefone)
-                        .addComponent(jLabel9)
-                        .addComponent(cmbcidade)
-                        .addComponent(jLabel11))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(calnasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txttelefone)
+                    .addComponent(jLabel9)
+                    .addComponent(cmbcidade)
+                    .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -777,8 +770,6 @@ public void setDados(Dados clsdados){
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Mtable;
-    private com.toedter.calendar.JDateChooser caldata;
-    private com.toedter.calendar.JDateChooser calnasc;
     private javax.swing.JComboBox<String> cmbcidade;
     private javax.swing.JComboBox<String> cmbidentificacao;
     private javax.swing.JButton cmdalterar;
