@@ -242,5 +242,9 @@ public class Dados {
         countclientes --;
         return "Cliente deletado com Sucesso";
     }
+
+    public int NUClientes() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

@@ -657,14 +657,14 @@ public void setDados(Dados clsdados){
 
     private void cmdultimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdultimoActionPerformed
         // Ultimo metodo para chamar o contador
-        clienteatual = clsdados.NProdutos()-1;
+        clienteatual = clsdados.NClientes()-1;
         visualizarCadastros();
     }//GEN-LAST:event_cmdultimoActionPerformed
 
     private void cmdproximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdproximoActionPerformed
         // Proximo incremento
         clienteatual ++;
-        if (clienteatual == clsdados.NProdutos()){
+        if (clienteatual == clsdados.NClientes()){
             clienteatual=0;
         }
         visualizarCadastros();
@@ -674,7 +674,7 @@ public void setDados(Dados clsdados){
         // incremento anterior
         clienteatual --;
         if (clienteatual == -1){
-            clienteatual = clsdados.NProdutos()-1;
+            clienteatual = clsdados.NClientes()-1;
             
         }
         visualizarCadastros();
@@ -742,7 +742,6 @@ public void setDados(Dados clsdados){
     }//GEN-LAST:event_cmbcidadeActionPerformed
     private void visualizarCadastros(){
         txtcodcliente.setText(clsdados.getClientes()[clienteatual].getIdCliente());
-
         txtnomedocliente.setText(clsdados.getClientes()[clienteatual].getNome());
         txtsobrenomedocliente.setText(clsdados.getClientes()[clienteatual].getSobnome());
         txttelefone.setText(clsdados.getClientes()[clienteatual].getTelefone());
@@ -760,17 +759,17 @@ public void setDados(Dados clsdados){
         String titulocabecalho[]={"Cod-Cliente", "Ident", "Data", "Nome", "Sobrenome", "End", "Tel", "Data-Nasc.", "Cidade", "E-mail"};
         String RegCadastro[] = new String [10];
         Usertable=new DefaultTableModel(null,titulocabecalho);
-        for(int i=0;i<clsdados.NProdutos();i++){
+        for(int i=0;i<clsdados.NClientes();i++){
             RegCadastro[0]=clsdados.getClientes()[i].getIdCliente();
             RegCadastro[1]=Id(clsdados.getClientes()[i].getIndent());
             RegCadastro[2]="" + clsdados.getClientes()[i].getDataVenda();
             RegCadastro[3]=clsdados.getClientes()[i].getNome();
             RegCadastro[4]=clsdados.getClientes()[i].getSobnome();
             RegCadastro[5]=clsdados.getClientes()[i].getEndereco();
-            RegCadastro[6]=clsdados.getProdutos()[i].getObservacao();
-            RegCadastro[7]=clsdados.getProdutos()[i].getObservacao();
-            RegCadastro[8]=clsdados.getProdutos()[i].getObservacao();
-            RegCadastro[9]=clsdados.getProdutos()[i].getObservacao();
+            RegCadastro[6]=clsdados.getClientes()[i].getTelefone();
+            RegCadastro[7]="" + clsdados.getClientes()[i].getDataNasc();
+            RegCadastro[8]=Cidade(clsdados.getClientes()[i].getCidade());
+            RegCadastro[9]=clsdados.getClientes()[i].getEmail();
             
             Usertable.addRow(RegCadastro);
         }
