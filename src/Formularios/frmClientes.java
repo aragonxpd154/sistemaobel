@@ -497,7 +497,6 @@ public void setDados(Dados clsdados){
         cmdsalvar.setEnabled(true);
         cmddeletar.setEnabled(false);
         
-        txtcodcliente.setEnabled(true);
         cmbidentificacao.setEnabled(true);
         txtnomedocliente.setEnabled(true);
         txtsobrenomedocliente.setEnabled(true);
@@ -541,12 +540,12 @@ public void setDados(Dados clsdados){
         }
         
         if (txtsobrenomedocliente.getText().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Favor digitar sobrenome do cliente válido");
+            JOptionPane.showMessageDialog(rootPane, "Favor digitar sobrenome do cliente valido");
             txtsobrenomedocliente.requestFocusInWindow();
             return;
         }       
         if (calnasc.getDate().before(new Date())){
-            JOptionPane.showMessageDialog(rootPane, "O cliente ncao pode ter a data de nascimento igual a data atual");
+            JOptionPane.showMessageDialog(rootPane, "O cliente nao pode ter a data de nascimento igual a data atual");
             calnasc.requestFocusInWindow();
             return;
         }
@@ -583,7 +582,7 @@ public void setDados(Dados clsdados){
         
         String msg;
         if (cmdNovo){
-            msg=clsdados.Cadcliente(Mcliente);
+            msg = clsdados.Cadcliente(Mcliente);
         }else{
             msg = clsdados.EditarCliente(Mcliente, poslinha);
         }
@@ -607,7 +606,7 @@ public void setDados(Dados clsdados){
         txtnomedocliente.setEnabled(false);
         txtsobrenomedocliente.setEnabled(false);
         txtendereco.setEnabled(false);
-        cmbcidade.setEnabled(false);
+        txttelefone.setEnabled(false);
         cmbcidade.setEnabled(false);
         txtemail.setEnabled(false);
         calnasc.setEnabled(false);
@@ -631,7 +630,7 @@ public void setDados(Dados clsdados){
         txtnomedocliente.setEnabled(false);
         txtsobrenomedocliente.setEnabled(false);
         txtendereco.setEnabled(false);
-        cmbcidade.setEnabled(false);
+        txttelefone.setEnabled(false);
         cmbcidade.setEnabled(false);
         txtemail.setEnabled(false);
         calnasc.setEnabled(false);
@@ -694,11 +693,11 @@ public void setDados(Dados clsdados){
 
     private void cmdpesquisar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdpesquisar1ActionPerformed
         // Metodo Pesquisar
-        String produto = JOptionPane.showInputDialog("Digite o codigo do produto para realizar sua pesquisa");
-        if (produto.equals("")){
+        String cliente = JOptionPane.showInputDialog("Digite o codigo do cliente para realizar sua pesquisa");
+        if (cliente.equals("")){
             return;
         }
-        int posL = clsdados.LinhaProdutos(produto);
+        int posL = clsdados.LinhaProdutos(cliente);
         if (posL ==  -1){
             JOptionPane.showMessageDialog(rootPane, "Não foi possivel localizar esse cadastro no banco de dados");
             return;
@@ -737,11 +736,16 @@ public void setDados(Dados clsdados){
     }//GEN-LAST:event_txttelefoneActionPerformed
     private void visualizarCadastros(){
         txtcodcliente.setText(clsdados.getClientes()[clienteatual].getIdCliente());
-        cmbidentificacao.setSelectedItem(clsdados.getClientes()[clienteatual].getIndent());
+
         txtnomedocliente.setText(clsdados.getClientes()[clienteatual].getNome());
         txtsobrenomedocliente.setText(clsdados.getClientes()[clienteatual].getSobnome());
         txttelefone.setText(clsdados.getClientes()[clienteatual].getTelefone());
+        txtendereco.setText(clsdados.getClientes()[clienteatual].getEndereco());
+        txtemail.setText(clsdados.getClientes()[clienteatual].getEmail());
+        cmbidentificacao.setSelectedIndex(clsdados.getClientes()[clienteatual].getIndent());
         cmbcidade.setText(clsdados.getClientes()[clienteatual].getCidade());
+        caldata.setDate(clsdados.getClientes()[clienteatual].getDataVenda());
+        calnasc.setDate(clsdados.getClientes()[clienteatual].getDataNasc());
         
        
     }
