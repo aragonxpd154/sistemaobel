@@ -740,7 +740,8 @@ public void setDados(Dados clsdados){
         cmbidentificacao.setSelectedItem(clsdados.getClientes()[clienteatual].getIndent());
         txtnomedocliente.setText(clsdados.getClientes()[clienteatual].getNome());
         txtsobrenomedocliente.setText(clsdados.getClientes()[clienteatual].getSobnome());
-        cmbcidade.setSelectedItem(clsdados.getClientes()[clienteatual].getCidade());
+        txttelefone.setText(clsdados.getClientes()[clienteatual].getTelefone());
+        cmbcidade.setText(clsdados.getClientes()[clienteatual].getCidade());
         
        
     }

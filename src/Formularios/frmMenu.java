@@ -68,6 +68,11 @@ public void setDados(Dados clsdados){
         mnarquivosclientes.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         mnarquivosclientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/clientes16x16.png"))); // NOI18N
         mnarquivosclientes.setText("Clientes");
+        mnarquivosclientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnarquivosclientesActionPerformed(evt);
+            }
+        });
         mnarquivosclientessair.add(mnarquivosclientes);
 
         mnarquivosprodutos.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -199,6 +204,14 @@ public void setDados(Dados clsdados){
         Deskpainel.add(Produtos);
         Produtos.show();
     }//GEN-LAST:event_mnarquivosprodutosActionPerformed
+
+    private void mnarquivosclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnarquivosclientesActionPerformed
+        //Codigo para acesso ao formulário de Clientes da Barra de Menu
+        frmClientes Cliente = new frmClientes();
+        Cliente.setDados(clsdados);
+        Deskpainel.add(Cliente);
+        Cliente.show();
+    }//GEN-LAST:event_mnarquivosclientesActionPerformed
 
     /**
      * @param args the command line arguments
