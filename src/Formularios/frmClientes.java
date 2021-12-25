@@ -757,15 +757,20 @@ public void setDados(Dados clsdados){
     }
     
     private void CarregarTable(){
-        String titulocabecalho[]={"Cliente", "Ident", "Data", "Nome", "Sobrenome", "End", "Tel", "Data-Nasc."};
+        String titulocabecalho[]={"Cod-Cliente", "Ident", "Data", "Nome", "Sobrenome", "End", "Tel", "Data-Nasc.", "Cidade", "E-mail"};
         String RegCadastro[] = new String [10];
         Usertable=new DefaultTableModel(null,titulocabecalho);
         for(int i=0;i<clsdados.NProdutos();i++){
-            RegCadastro[0]=clsdados.getProdutos()[i].getCodproduto();
-            RegCadastro[1]=clsdados.getProdutos()[i].getDescricao();
-            RegCadastro[2]="" + clsdados.getProdutos()[i].getPreco();
-            RegCadastro[3]= Taxa (clsdados.getProdutos()[i].getTaxa());
-            RegCadastro[4]=clsdados.getProdutos()[i].getObservacao();
+            RegCadastro[0]=clsdados.getClientes()[i].getIdCliente();
+            RegCadastro[1]=Id(clsdados.getClientes()[i].getIndent());
+            RegCadastro[2]="" + clsdados.getClientes()[i].getDataVenda();
+            RegCadastro[3]=clsdados.getClientes()[i].getNome();
+            RegCadastro[4]=clsdados.getClientes()[i].getSobnome();
+            RegCadastro[5]=clsdados.getClientes()[i].getEndereco();
+            RegCadastro[6]=clsdados.getProdutos()[i].getObservacao();
+            RegCadastro[7]=clsdados.getProdutos()[i].getObservacao();
+            RegCadastro[8]=clsdados.getProdutos()[i].getObservacao();
+            RegCadastro[9]=clsdados.getProdutos()[i].getObservacao();
             
             Usertable.addRow(RegCadastro);
         }
