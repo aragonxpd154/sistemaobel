@@ -32,6 +32,10 @@ public class Cliente {
         this.Email = Email;
     }
 
+    public Cliente(String text, String text0, String text1, String text2, String text3, int selectedIndex, Date date, Date date0, String text4) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public String getIdCliente() {
         return idCliente;
     }

@@ -66,16 +66,16 @@ public void setDados(Dados clsdados){
         jLabel8 = new javax.swing.JLabel();
         txtendereco = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        cmbcidade = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtemail = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        cmbidentificacao = new javax.swing.JComboBox<>();
         caldata = new com.toedter.calendar.JDateChooser();
         calnasc = new com.toedter.calendar.JDateChooser();
         txttelefone = new javax.swing.JTextField();
+        cmbidentificacao = new javax.swing.JComboBox<>();
+        cmbcidade = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -248,13 +248,6 @@ public void setDados(Dados clsdados){
         jLabel4.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jLabel4.setText("Endereço:");
 
-        cmbcidade.setEnabled(false);
-        cmbcidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbcidadeActionPerformed(evt);
-            }
-        });
-
         jLabel5.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jLabel5.setText("      Telefone:");
 
@@ -274,6 +267,13 @@ public void setDados(Dados clsdados){
         jLabel11.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jLabel11.setText("Cidade:");
 
+        txttelefone.setEnabled(false);
+        txttelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txttelefoneActionPerformed(evt);
+            }
+        });
+
         cmbidentificacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Taxa", "10%", "15%", "20%" }));
         cmbidentificacao.setEnabled(false);
         cmbidentificacao.addActionListener(new java.awt.event.ActionListener() {
@@ -282,10 +282,10 @@ public void setDados(Dados clsdados){
             }
         });
 
-        txttelefone.setEnabled(false);
-        txttelefone.addActionListener(new java.awt.event.ActionListener() {
+        cmbcidade.setEnabled(false);
+        cmbcidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttelefoneActionPerformed(evt);
+                cmbcidadeActionPerformed(evt);
             }
         });
 
@@ -343,9 +343,9 @@ public void setDados(Dados clsdados){
                                 .addComponent(calnasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cmbcidade)
-                                .addGap(102, 102, 102))
+                                .addGap(142, 142, 142))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
                                 .addComponent(jLabel4)
@@ -366,7 +366,7 @@ public void setDados(Dados clsdados){
                                 .addComponent(txtcodcliente)
                                 .addGap(44, 44, 44)
                                 .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cmbidentificacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel8)
@@ -383,9 +383,14 @@ public void setDados(Dados clsdados){
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(caldata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(14, 14, 14)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(caldata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(14, 14, 14))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(cmbidentificacao, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(txtnomedocliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -397,8 +402,7 @@ public void setDados(Dados clsdados){
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(jLabel6)
-                            .addComponent(txtcodcliente)
-                            .addComponent(cmbidentificacao))
+                            .addComponent(txtcodcliente))
                         .addGap(56, 56, 56)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -408,10 +412,10 @@ public void setDados(Dados clsdados){
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
-                        .addComponent(cmbcidade)
                         .addComponent(jLabel9)
                         .addComponent(jLabel11)
-                        .addComponent(txttelefone))
+                        .addComponent(txttelefone)
+                        .addComponent(cmbcidade))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(calnasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -456,22 +460,21 @@ public void setDados(Dados clsdados){
         cmddeletar.setEnabled(false);
         
         txtcodcliente.setEnabled(true);
-        cmbidentificacao.setEnabled(true);
+        cmbcidade.setEnabled(true);
         txtnomedocliente.setEnabled(true);
         txtsobrenomedocliente.setEnabled(true);
         txtendereco.setEnabled(true);
-        cmbcidade.setEnabled(true);
         txtemail.setEnabled(true);
         calnasc.setEnabled(true);
         
         
         txtcodcliente.setText("");
-        cmbidentificacao.setSelectedIndex(0);
         txtnomedocliente.setText("");
         txtsobrenomedocliente.setText("");
         txtendereco.setText("");
         txttelefone.setText("");
         cmbcidade.setText("");
+        cmbidentificacao.setSelectedIndex(0);
         txtemail.setText("");
         calnasc.setDate(new Date());
         caldata.setDate(new Date());
@@ -497,18 +500,18 @@ public void setDados(Dados clsdados){
         cmdsalvar.setEnabled(true);
         cmddeletar.setEnabled(false);
         
+        cmbcidade.setEnabled(true);
         cmbidentificacao.setEnabled(true);
         txtnomedocliente.setEnabled(true);
         txtsobrenomedocliente.setEnabled(true);
         txtendereco.setEnabled(true);
         txttelefone.setEnabled(true);
-        cmbcidade.setEnabled(true);
         txtemail.setEnabled(true);
         calnasc.setEnabled(true);
          
         cmdNovo=false;
         
-        cmbidentificacao.requestFocusInWindow();
+        cmbcidade.requestFocusInWindow();
         
         CarregarTable();
     }//GEN-LAST:event_cmdalterarActionPerformed
@@ -522,12 +525,12 @@ public void setDados(Dados clsdados){
             txtcodcliente.requestFocusInWindow();
             return;
         }
-        if (cmbidentificacao.getSelectedIndex()==0){
+        if (cmbcidade.getText().equals("")){
             JOptionPane.showMessageDialog(rootPane, "Favor digitar um numero de telefone valido");
-            cmbidentificacao.requestFocusInWindow();
+            cmbcidade.requestFocusInWindow();
             return;
         }
-        if (cmbcidade.getText().equals("")){
+        if (cmbidentificacao.getSelectedIndex()==0){
             JOptionPane.showMessageDialog(rootPane, "Favor digitar um cidade valido");
             cmbcidade.requestFocusInWindow();
             return;
@@ -546,6 +549,11 @@ public void setDados(Dados clsdados){
         }       
         if (calnasc.getDate().before(new Date())){
             JOptionPane.showMessageDialog(rootPane, "O cliente nao pode ter a data de nascimento igual a data atual");
+            calnasc.requestFocusInWindow();
+            return;
+        }
+        if (caldata.getDate().before(new Date())){
+            JOptionPane.showMessageDialog(rootPane, "O cliente nao pode ter a data atual igual a data de nascimento");
             calnasc.requestFocusInWindow();
             return;
         }
@@ -569,12 +577,12 @@ public void setDados(Dados clsdados){
         }
         Cliente Mcliente;
     Mcliente = new Cliente(txtcodcliente.getText(),
-            cmbidentificacao.getSelectedIndex(),
+            cmbcidade.getText(),            
             txtnomedocliente.getText(),
             txtsobrenomedocliente.getText(),
             txtendereco.getText(),
             txttelefone.getText(),
-            cmbcidade.getText(),
+            cmbidentificacao.getSelectedIndex(),
             caldata.getDate(),
             calnasc.getDate(),
             txtemail.getText()
@@ -602,12 +610,12 @@ public void setDados(Dados clsdados){
         cmddeletar.setEnabled(true);
         
         txtcodcliente.setEnabled(false);
+        cmbcidade.setEnabled(false);
         cmbidentificacao.setEnabled(false);
         txtnomedocliente.setEnabled(false);
         txtsobrenomedocliente.setEnabled(false);
         txtendereco.setEnabled(false);
         txttelefone.setEnabled(false);
-        cmbcidade.setEnabled(false);
         txtemail.setEnabled(false);
         calnasc.setEnabled(false);
         
@@ -626,12 +634,12 @@ public void setDados(Dados clsdados){
         cmddeletar.setEnabled(true);
         
         txtcodcliente.setEnabled(false);
+        cmbcidade.setEnabled(false);
         cmbidentificacao.setEnabled(false);
         txtnomedocliente.setEnabled(false);
         txtsobrenomedocliente.setEnabled(false);
         txtendereco.setEnabled(false);
         txttelefone.setEnabled(false);
-        cmbcidade.setEnabled(false);
         txtemail.setEnabled(false);
         calnasc.setEnabled(false);
     }//GEN-LAST:event_cmdcancelarActionPerformed
@@ -719,21 +727,21 @@ public void setDados(Dados clsdados){
         // TODO add your handling code here:
     }//GEN-LAST:event_txtenderecoActionPerformed
 
-    private void cmbcidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbcidadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbcidadeActionPerformed
-
     private void txtemailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtemailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtemailActionPerformed
+
+    private void txttelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txttelefoneActionPerformed
 
     private void cmbidentificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbidentificacaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbidentificacaoActionPerformed
 
-    private void txttelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttelefoneActionPerformed
+    private void cmbcidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbcidadeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txttelefoneActionPerformed
+    }//GEN-LAST:event_cmbcidadeActionPerformed
     private void visualizarCadastros(){
         txtcodcliente.setText(clsdados.getClientes()[clienteatual].getIdCliente());
 
@@ -742,8 +750,8 @@ public void setDados(Dados clsdados){
         txttelefone.setText(clsdados.getClientes()[clienteatual].getTelefone());
         txtendereco.setText(clsdados.getClientes()[clienteatual].getEndereco());
         txtemail.setText(clsdados.getClientes()[clienteatual].getEmail());
+        cmbcidade.setText( clsdados.getClientes()[clienteatual].getCidade());
         cmbidentificacao.setSelectedIndex(clsdados.getClientes()[clienteatual].getIndent());
-        cmbcidade.setText(clsdados.getClientes()[clienteatual].getCidade());
         caldata.setDate(clsdados.getClientes()[clienteatual].getDataVenda());
         calnasc.setDate(clsdados.getClientes()[clienteatual].getDataNasc());
         
