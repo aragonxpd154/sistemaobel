@@ -12,7 +12,6 @@ package Formularios;
 
 import Classes.Cliente;
 import Classes.Dados;
-import Classes.Utilidades;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -67,16 +66,16 @@ public void setDados(Dados clsdados){
         jLabel8 = new javax.swing.JLabel();
         txtendereco = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txttelefone = new javax.swing.JTextField();
+        cmbcidade = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        cmbcidade = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
         txtemail = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         cmbidentificacao = new javax.swing.JComboBox<>();
         caldata = new com.toedter.calendar.JDateChooser();
         calnasc = new com.toedter.calendar.JDateChooser();
+        txttelefone = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
@@ -249,10 +248,10 @@ public void setDados(Dados clsdados){
         jLabel4.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jLabel4.setText("Endereço:");
 
-        txttelefone.setEnabled(false);
-        txttelefone.addActionListener(new java.awt.event.ActionListener() {
+        cmbcidade.setEnabled(false);
+        cmbcidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttelefoneActionPerformed(evt);
+                cmbcidadeActionPerformed(evt);
             }
         });
 
@@ -261,14 +260,6 @@ public void setDados(Dados clsdados){
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jLabel9.setText("D-Nasc:");
-
-        cmbcidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Taxa", "10%", "15%", "20%" }));
-        cmbcidade.setEnabled(false);
-        cmbcidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbcidadeActionPerformed(evt);
-            }
-        });
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jLabel10.setText("E-mail:");
@@ -288,6 +279,13 @@ public void setDados(Dados clsdados){
         cmbidentificacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbidentificacaoActionPerformed(evt);
+            }
+        });
+
+        txttelefone.setEnabled(false);
+        txttelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txttelefoneActionPerformed(evt);
             }
         });
 
@@ -337,16 +335,17 @@ public void setDados(Dados clsdados){
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(10, 10, 10)
                                 .addComponent(txttelefone)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(calnasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel11)
-                                .addGap(10, 10, 10)
-                                .addComponent(cmbcidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbcidade)
+                                .addGap(102, 102, 102))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
                                 .addComponent(jLabel4)
@@ -409,10 +408,10 @@ public void setDados(Dados clsdados){
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
-                        .addComponent(txttelefone)
-                        .addComponent(jLabel9)
                         .addComponent(cmbcidade)
-                        .addComponent(jLabel11))
+                        .addComponent(jLabel9)
+                        .addComponent(jLabel11)
+                        .addComponent(txttelefone))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(calnasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -461,7 +460,6 @@ public void setDados(Dados clsdados){
         txtnomedocliente.setEnabled(true);
         txtsobrenomedocliente.setEnabled(true);
         txtendereco.setEnabled(true);
-        txttelefone.setEnabled(true);
         cmbcidade.setEnabled(true);
         txtemail.setEnabled(true);
         calnasc.setEnabled(true);
@@ -473,7 +471,7 @@ public void setDados(Dados clsdados){
         txtsobrenomedocliente.setText("");
         txtendereco.setText("");
         txttelefone.setText("");
-        cmbcidade.setSelectedIndex(0);
+        cmbcidade.setText("");
         txtemail.setText("");
         calnasc.setDate(new Date());
         caldata.setDate(new Date());
@@ -530,14 +528,9 @@ public void setDados(Dados clsdados){
             cmbidentificacao.requestFocusInWindow();
             return;
         }
-        if (cmbcidade.getSelectedIndex()==0){
-            JOptionPane.showMessageDialog(rootPane, "Favor digitar uma cidade valido");
+        if (cmbcidade.getText().equals("")){
+            JOptionPane.showMessageDialog(rootPane, "Favor digitar um cidade valido");
             cmbcidade.requestFocusInWindow();
-            return;
-        }
-        if (txttelefone.getText().equals("")){
-            JOptionPane.showMessageDialog(rootPane, "Favor digitar um numero de telefone valido");
-            txttelefone.requestFocusInWindow();
             return;
         }
         if (txtemail.getText().equals("")){
@@ -582,7 +575,7 @@ public void setDados(Dados clsdados){
             txtsobrenomedocliente.getText(),
             txtendereco.getText(),
             txttelefone.getText(),
-            cmbcidade.getSelectedIndex(),
+            cmbcidade.getText(),
             caldata.getDate(),
             calnasc.getDate(),
             txtemail.getText()
@@ -614,7 +607,7 @@ public void setDados(Dados clsdados){
         txtnomedocliente.setEnabled(false);
         txtsobrenomedocliente.setEnabled(false);
         txtendereco.setEnabled(false);
-        txttelefone.setEnabled(false);
+        cmbcidade.setEnabled(false);
         cmbcidade.setEnabled(false);
         txtemail.setEnabled(false);
         calnasc.setEnabled(false);
@@ -638,7 +631,7 @@ public void setDados(Dados clsdados){
         txtnomedocliente.setEnabled(false);
         txtsobrenomedocliente.setEnabled(false);
         txtendereco.setEnabled(false);
-        txttelefone.setEnabled(false);
+        cmbcidade.setEnabled(false);
         cmbcidade.setEnabled(false);
         txtemail.setEnabled(false);
         calnasc.setEnabled(false);
@@ -727,10 +720,6 @@ public void setDados(Dados clsdados){
         // TODO add your handling code here:
     }//GEN-LAST:event_txtenderecoActionPerformed
 
-    private void txttelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttelefoneActionPerformed
-
     private void cmbcidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbcidadeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbcidadeActionPerformed
@@ -742,6 +731,10 @@ public void setDados(Dados clsdados){
     private void cmbidentificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbidentificacaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbidentificacaoActionPerformed
+
+    private void txttelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txttelefoneActionPerformed
     private void visualizarCadastros(){
         txtcodcliente.setText(clsdados.getClientes()[clienteatual].getIdCliente());
         cmbidentificacao.setSelectedItem(clsdados.getClientes()[clienteatual].getIndent());
@@ -783,7 +776,7 @@ public void setDados(Dados clsdados){
     private javax.swing.JTable Mtable;
     private com.toedter.calendar.JDateChooser caldata;
     private com.toedter.calendar.JDateChooser calnasc;
-    private javax.swing.JComboBox<String> cmbcidade;
+    private javax.swing.JTextField cmbcidade;
     private javax.swing.JComboBox<String> cmbidentificacao;
     private javax.swing.JButton cmdalterar;
     private javax.swing.JButton cmdanterior;
