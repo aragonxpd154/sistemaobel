@@ -625,10 +625,10 @@ public void setDados(Dados clsdados){
     }
     private String Taxa (int idtaxa){
         switch(idtaxa){
-            case 0: return "0%";
-            case 1: return "10%";
-            case 2: return "15%";
-            case 3: return "20%";
+            case 0: return "Vitória";
+            case 1: return "Vila Velha";
+            case 2: return "Serra";
+            case 3: return "Guaraparir";
             default: return "Sem Taxa";
             
         

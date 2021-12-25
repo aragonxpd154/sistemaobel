@@ -75,7 +75,7 @@ public void setDados(Dados clsdados){
         calnasc = new com.toedter.calendar.JDateChooser();
         txttelefone = new javax.swing.JTextField();
         cmbidentificacao = new javax.swing.JComboBox<>();
-        cmbcidade = new javax.swing.JTextField();
+        cmbcidade = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -274,7 +274,7 @@ public void setDados(Dados clsdados){
             }
         });
 
-        cmbidentificacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Taxa", "10%", "15%", "20%" }));
+        cmbidentificacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione ID", "CPF", "CNPJ", "Carteira de Indentidade" }));
         cmbidentificacao.setEnabled(false);
         cmbidentificacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,6 +282,7 @@ public void setDados(Dados clsdados){
             }
         });
 
+        cmbcidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Cidade", "Vitoria", "Vila Velha", "Serra", "Guaraparir", "Pedra Azul", "Domingos Martins", "Laranja da Terra" }));
         cmbcidade.setEnabled(false);
         cmbcidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -325,32 +326,33 @@ public void setDados(Dados clsdados){
                         .addComponent(jScrollPane1)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtemail)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel5)
-                                .addGap(10, 10, 10)
-                                .addComponent(txttelefone)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(calnasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cmbcidade)
-                                .addGap(142, 142, 142))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtendereco)))
+                                .addComponent(txtendereco))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(8, 8, 8)
+                                        .addComponent(jLabel5)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(txttelefone)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(calnasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel11))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(38, 38, 38)
+                                        .addComponent(jLabel10)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtemail)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cmbcidade, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(48, 48, 48)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -383,14 +385,9 @@ public void setDados(Dados clsdados){
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(caldata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(14, 14, 14))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(cmbidentificacao, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)))
+                            .addComponent(jLabel1)
+                            .addComponent(caldata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(txtnomedocliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -402,7 +399,8 @@ public void setDados(Dados clsdados){
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(jLabel6)
-                            .addComponent(txtcodcliente))
+                            .addComponent(txtcodcliente)
+                            .addComponent(cmbidentificacao, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
                         .addGap(56, 56, 56)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -415,7 +413,7 @@ public void setDados(Dados clsdados){
                         .addComponent(jLabel9)
                         .addComponent(jLabel11)
                         .addComponent(txttelefone)
-                        .addComponent(cmbcidade))
+                        .addComponent(cmbcidade, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(calnasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -473,7 +471,7 @@ public void setDados(Dados clsdados){
         txtsobrenomedocliente.setText("");
         txtendereco.setText("");
         txttelefone.setText("");
-        cmbcidade.setText("");
+        cmbcidade.setSelectedIndex(0);
         cmbidentificacao.setSelectedIndex(0);
         txtemail.setText("");
         calnasc.setDate(new Date());
@@ -525,7 +523,7 @@ public void setDados(Dados clsdados){
             txtcodcliente.requestFocusInWindow();
             return;
         }
-        if (cmbcidade.getText().equals("")){
+        if (cmbcidade.getSelectedIndex()==0){
             JOptionPane.showMessageDialog(rootPane, "Favor digitar um numero de telefone valido");
             cmbcidade.requestFocusInWindow();
             return;
@@ -577,7 +575,7 @@ public void setDados(Dados clsdados){
         }
         Cliente Mcliente;
     Mcliente = new Cliente(txtcodcliente.getText(),
-            cmbcidade.getText(),            
+            cmbcidade.getSelectedIndex(),            
             txtnomedocliente.getText(),
             txtsobrenomedocliente.getText(),
             txtendereco.getText(),
@@ -750,7 +748,7 @@ public void setDados(Dados clsdados){
         txttelefone.setText(clsdados.getClientes()[clienteatual].getTelefone());
         txtendereco.setText(clsdados.getClientes()[clienteatual].getEndereco());
         txtemail.setText(clsdados.getClientes()[clienteatual].getEmail());
-        cmbcidade.setText( clsdados.getClientes()[clienteatual].getCidade());
+        cmbcidade.setSelectedIndex( clsdados.getClientes()[clienteatual].getCidade());
         cmbidentificacao.setSelectedIndex(clsdados.getClientes()[clienteatual].getIndent());
         caldata.setDate(clsdados.getClientes()[clienteatual].getDataVenda());
         calnasc.setDate(clsdados.getClientes()[clienteatual].getDataNasc());
@@ -759,8 +757,8 @@ public void setDados(Dados clsdados){
     }
     
     private void CarregarTable(){
-        String titulocabecalho[]={"Cod do Produto", "Descrição", "Preço","Taxa", "Observação"};
-        String RegCadastro[] = new String [5];
+        String titulocabecalho[]={"Cliente", "Ident", "Data", "Nome", "Sobrenome", "End", "Tel", "Data-Nasc."};
+        String RegCadastro[] = new String [10];
         Usertable=new DefaultTableModel(null,titulocabecalho);
         for(int i=0;i<clsdados.NProdutos();i++){
             RegCadastro[0]=clsdados.getProdutos()[i].getCodproduto();
@@ -773,13 +771,22 @@ public void setDados(Dados clsdados){
         }
         Mtable.setModel(Usertable);
     }
-    private String Taxa (int idtaxa){
-        switch(idtaxa){
+    private String Id (int ident){
+        switch(ident){
+            case 0: return "CPF";
+            case 1: return "CNPJ";
+            case 2: return "Carteira de Identidade";
+            default: return "Sem Id";
+        }
+    }
+    
+    private String Cidade (int idCidade){
+        switch(idCidade){
             case 0: return "0%";
             case 1: return "10%";
             case 2: return "15%";
             case 3: return "20%";
-            default: return "Sem Taxa";
+            default: return "Sem Cidade";
             
         
         }
@@ -789,7 +796,7 @@ public void setDados(Dados clsdados){
     private javax.swing.JTable Mtable;
     private com.toedter.calendar.JDateChooser caldata;
     private com.toedter.calendar.JDateChooser calnasc;
-    private javax.swing.JTextField cmbcidade;
+    private javax.swing.JComboBox<String> cmbcidade;
     private javax.swing.JComboBox<String> cmbidentificacao;
     private javax.swing.JButton cmdalterar;
     private javax.swing.JButton cmdanterior;

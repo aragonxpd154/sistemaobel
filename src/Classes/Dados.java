@@ -69,15 +69,15 @@ public class Dados {
         Cliente Mcliente;
         
         // Regitrando cadastro de Produtos
-        Mcliente = new Cliente("1",1, "Marcos", "Silva", "Seven Sister Road", "252623325","1",Utilidades.StringToDate("1952/10/04"),Utilidades.StringToDate("1952/10/04"),"marcos.silvabl@live.com");
+        Mcliente = new Cliente("1",1, "Marcos", "Silva", "Seven Sister Road", "252623325",1,Utilidades.StringToDate("1952/10/04"),Utilidades.StringToDate("1952/10/04"),"marcos.silvabl@live.com");
         Mclientes[countclientes]=Mcliente;
         countclientes ++;
         
-        Mcliente = new Cliente("2",1, "Marcos", "Silva", "Seven Sister Road", "252623325","1",Utilidades.StringToDate("1952/10/04"),Utilidades.StringToDate("1952/10/04"),"marcos.silvabl@live.com");
+        Mcliente = new Cliente("2",1, "Marcos", "Silva", "Seven Sister Road", "252623325",1,Utilidades.StringToDate("1952/10/04"),Utilidades.StringToDate("1952/10/04"),"marcos.silvabl@live.com");
         Mclientes[countclientes]=Mcliente;
         countclientes ++;
         
-        Mcliente = new Cliente("3",1, "Marcos", "Silva", "Seven Sister Road", "252623325","1",Utilidades.StringToDate("1952/10/04"),Utilidades.StringToDate("1952/10/04"),"marcos.silvabl@live.com");
+        Mcliente = new Cliente("3",1, "Marcos", "Silva", "Seven Sister Road", "252623325",1,Utilidades.StringToDate("1952/10/04"),Utilidades.StringToDate("1952/10/04"),"marcos.silvabl@live.com");
         Mclientes[countclientes]=Mcliente;
         countclientes ++;
         

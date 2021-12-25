@@ -14,12 +14,12 @@ public class Cliente {
     private String Sobnome;
     private String Endereco;
     private String Telefone;
-    private String Cidade;
+    private int Cidade;
     private Date DataNasc;
     private Date DataVenda;
     private String Email;
 
-    public Cliente(String idCliente, int Indent, String Nome, String Sobnome, String Endereco, String Telefone, String Cidade, Date DataNasc, Date DataVenda, String Email) {
+    public Cliente(String idCliente, int Indent, String Nome, String Sobnome, String Endereco, String Telefone, int Cidade, Date DataNasc, Date DataVenda, String Email) {
         this.idCliente = idCliente;
         this.Indent = Indent;
         this.Nome = Nome;
@@ -84,11 +84,11 @@ public class Cliente {
         this.Telefone = Telefone;
     }
 
-    public String getCidade() {
+    public int getCidade() {
         return Cidade;
     }
 
-    public void setCidade(String Cidade) {
+    public void setCidade(int Cidade) {
         this.Cidade = Cidade;
     }
 
